@@ -1,0 +1,91 @@
+% Size: 7.5" x 9.25"(19.05 x 23.5 cm) 
+
+\input{header}
+%\input{experiment_header}
+
+
+\fancypagestyle{frontstyle}{
+  \fancyhf{}
+  \fancyhead[RO, LE] {\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
+
+\usepackage{etoolbox}
+\patchcmd{\part}{plain}{empty}{}{}
+\patchcmd{\chapter}{plain}{frontstyle}{}{}
+
+% Remove the page number on the first page of the index section
+%  By default, the page number is displayed at the bottom, which is 
+%  out of the boundary according to Createspace. 
+\patchcmd\theindex{\thispagestyle{plain}}{\thispagestyle{empty}}{}{}
+
+% Turn off the answer portion (for book, use this option)
+\excludecomment{commentp}
+% Turn on the answer portion (for answers, use this option)
+%\includecomment{commentp}
+
+
+\makeindex
+
+\begin{document}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frontmatter
+
+\input{titlepage}
+\input{copyright}
+\input{dedication}
+
+\dominitoc 
+\doparttoc
+\tableofcontents
+
+\input{preface}
+\input{author}
+\input{acknowledgment}
+
+
+%%\listoffigures
+%%\listoftables
+%%\lstlistoflistings
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mainmatter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%% Writing the Book  %%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\part{Writing the Book}
+\parttoc
+
+\input{latexbasics} 
+\input{tricks}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%% Self Publishing %%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\part{Self Publishing the Book}
+\parttoc
+
+\input{publishing} 
+\input{chapter4}  
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% Bibliography %%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\thispagestyle{empty}
+\bibliographystyle{apalike}
+\def\baselinestretch{1}
+\bibliography{BibBook}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\printindex
+%\thispagestyle{empty}
+
+\end{document}
+

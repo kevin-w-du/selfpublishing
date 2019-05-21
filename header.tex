@@ -1,0 +1,108 @@
+\documentclass[10pt]{book}
+
+% Use the following set up, it works for CreateSpace and IngramSpark. 
+\usepackage{geometry}
+\geometry{paperwidth=7.5in,paperheight=9.25in, bindingoffset=2cm,
+          left=1.00in,right=0.50in,top=0.75in,bottom=0.50in,twoside}
+
+
+\usepackage[most]{tcolorbox}
+\usepackage{times}
+\usepackage{epsf}
+\usepackage{epsfig}
+\usepackage{amsmath, alltt, amssymb, xspace}
+\usepackage{wrapfig}
+\usepackage{fancyhdr}
+\usepackage{url}
+\usepackage{verbatim}
+\usepackage{fancyvrb}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{minitoc}
+\usepackage{makeidx}
+\usepackage{lipsum}
+
+
+\usepackage{subfigure}
+%\usepackage[style=numeric]{biblatex}
+%\usepackage{cite}
+\usepackage[square]{natbib}
+\usepackage{hyperref}
+\hypersetup{%
+    pdfborder = {0 0 0}
+}
+
+\usepackage{sidecap}
+\usepackage{pifont}
+\usepackage{mdframed}
+\usepackage{textcomp}
+\usepackage{comment}
+\usepackage{enumitem}
+
+% for watermark 
+%\usepackage{draftwatermark}
+
+\newcommand{\ubuntutwo}{{\tt Ubuntu12.04}\xspace}
+\newcommand{\ubuntusix}{{\tt Ubuntu16.04}\xspace}
+
+\newcommand{\todo}[1]{
+\vspace{0.1in}
+\fbox{\parbox{0.9\textwidth}{TODO: #1}}
+\vspace{0.1in}
+}
+
+\newcommand{\mybox}[1]{
+\vspace{0.2in}
+\noindent
+\fbox{\parbox{6.5in}{#1}}
+\vspace{0.1in}
+}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{lightgray}{gray}{0.90}
+
+
+\lstset{%
+  frame=none,
+  language=,
+  backgroundcolor=\color{lightgray}, 
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+%  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3,
+  columns=fullflexible,
+  keepspaces=true,
+  escapeinside={(*@}{@*)}
+}
+
+
+% This should be turned on when we compile the whole book
+% Control the depth of the minitoc. The default is 2, but 
+% I prefer to use 1.
+\setcounter{minitocdepth}{1}
+\setcounter{parttocdepth}{0}
+
+
+% Add chapter number to enumerate list number
+% Each chapter will redefine this \mychapternumber variable.
+%\newcommand{\mychapternumber}{0}
+%\setenumerate[1]{label=\mychapternumber.\arabic*.}
+%\setenumerate[1]{label=\thechapter.\arabic*.}
+%\setenumerate[2]{label=\arabic*.}
+
+
+\newcommand{\seedurl}{\url{https://seedsecuritylabs.org}}
+\newcommand{\problemurl}{\url{https://www.handsonsecurity.net/}}
+\newcommand{\bookurl}{\url{https://www.handsonsecurity.net/}}
+

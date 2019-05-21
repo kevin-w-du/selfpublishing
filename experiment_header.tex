@@ -1,0 +1,181 @@
+
+\usepackage{microtype}
+
+\tcbuselibrary{skins}
+\usepackage{lipsum}
+\usepackage{tikz}
+
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+                        \node[text=white,text centered,shape=circle,draw,fill=black,
+                                inner sep=0.2pt,minimum size=1pt] (char)
+             {\footnotesize #1};}}
+
+
+\makeatletter
+\newcommand{\manuallabel}[2]{\def\@currentlabel{#2}\label{#1}}
+\makeatother
+
+
+% This the one that we will use
+\newtcolorbox{myfigbox}[2]{colback=blue!5!white,colframe=blue!75!black,
+              title=\figurename~#1: #2}
+\def \mylabel#1{\stepcounter{figure} \manuallabel{#1}{\thefigure}}
+
+
+% Default is on top
+\newtcolorbox{mysidebar}[1][t]
+%{float=#1, colback=blue!5!white,colframe=blue!75!black, title=#2, enhanced}
+{ 
+   enhanced,
+   title = {Sidebar \thetcbcounter},
+   float=#1,  
+}
+
+
+\newtcolorbox[auto counter,number within=chapter]{mysidebar2}[1][]
+{  
+   enhanced,
+   fonttitle=\scshape,
+   title = {Sidebar \thetcbcounter},
+   float=#1
+}
+
+
+% Default is on the right side
+\newenvironment{mywrapsidebar}[1][R]
+  {\wrapfigure{#1}{0.5\textwidth}\tcolorbox}{\endtcolorbox\endwrapfigure}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The above are being used
+%------------------------------------------------------------------------------
+% The below are still in the trial phase. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+% We will use this to include figures.
+% Note: we increase the counter ourselves, so inside the figure, we can have caption 
+% any more, because \caption automatically increases the counter.
+% Without \caption, the \label will take the section number, instead of the 
+%  figure number, so we can't use \label any more.
+\newenvironment{myfigure}[2]
+{
+    \begin{figure}[#1]
+    \stepcounter{figure}
+    \begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,
+       title=\figurename~\thefigure: #2]
+}
+{\end{tcolorbox}\end{figure}}
+
+
+% This version is not used any more.
+\newenvironment{mymyfigure}[1]
+{
+    \stepcounter{figure}
+    \begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,
+       title=\figurename~\thefigure: #1]
+}
+{\end{tcolorbox}}
+
+
+
+
+\newenvironment{mywrapfigure}[1]
+{
+    \stepcounter{figure}
+    \begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,
+       title=\figurename~\thefigure: #1]
+}
+{\end{tcolorbox}}
+
+
+
+
+
+%\newtcolorbox[blend into=figures]{myfigure}[2][]{float=htb,capture=hbox,
+%title={#2},every float=\centering,#1}
+
+
+%Defining a newtcolorbox to be a standard box for all examples in the text:
+\newtcolorbox[auto counter,number within=section]{phbox}[1][]{skin=bicolor,
+                title=Figure~\thefigure,#1,
+                size=title,colback=white,colbacklower=black!10!white}
+
+
+
+
+\newenvironment{tcfigure}[1]
+{\stepcounter{figure}%
+\tcbset{colback=blue!5!white,colframe=blue!75!black,title=\figurename~\thefigure: #1}
+\begin{tcolorbox}}
+{\end{tcolorbox}}
+
+
+
+\tcbset{frogbox/.style={enhanced,colback=green!10,colframe=green!65!black,
+		enlarge top by=5.5mm,
+		overlay={\foreach \x in {2cm,3.5cm} {
+				\begin{scope}[shift={([xshift=\x]frame.north
+					west)}]
+					\path[draw=green!65!black,fill=green!10,line
+					width=1mm] (0,0) arc (0:180:5mm);
+					\path[fill=black] (-0.2,0) arc
+					(0:180:1mm);
+\end{scope}}}}}
+
+
+\usetikzlibrary{patterns} % preamble
+% \tcbuselibrary{skins} % preamble
+\tcbset{ribbonbox/.style={enhanced,colback=red!5!white,colframe=red!75!black,
+		fonttitle=\bfseries,
+		overlay={\path[fill=blue!75!white,draw=blue,double=white!85!blue,
+				preaction={opacity=0.6,fill=blue!75!white},
+				line width=0.1mm,double distance=0.2mm,
+				pattern=fivepointed stars,pattern
+			color=white!75!blue]
+			([xshift=-0.2mm,yshift=-1.02cm]frame.north east)
+			-- ++(-1,1) -- ++(-0.5,0) -- ++(1.5,-1.5) --
+cycle;}}}
+
+
+%\newtcolorbox[blend into=figures]{myfigure}[2][]{float=htb,capture=hbox,
+%title={#2},every float=\centering,#1}
+
+
+\usepackage{varwidth}
+\newtcolorbox{mynewbox}[2][]{enhanced,
+	attach boxed title to top left={xshift=1cm,yshift=-2mm},
+	fonttitle=\bfseries,varwidth boxed title=0.7\linewidth,
+	colbacktitle=green!45!white,coltitle=green!10!black,colframe=green!50!black,
+	interior style={top color=yellow!10!white,bottom
+	color=green!10!white},
+	boxed title style={enhanced,boxrule=0.75mm,colframe=white,
+		borderline={0.1mm}{0mm}{green!50!black},
+		borderline={0.1mm}{0.75mm}{green!50!black},
+		interior style={top color=green!10!white,bottom
+			color=green!10!white,
+		middle color=green!50!white},
+	drop fuzzy shadow}, title={#2},#1}
+
+
+
+\usetikzlibrary{decorations.text,decorations.pathreplacing,calc}
+
+\newcommand{\tikzmark}[2]{%
+     \tikz[overlay,remember picture] \node[text=black, inner sep=2pt] (#1) {#2};}
+
+
+\newcommand*{\AddNote}[4]{%
+    \begin{tikzpicture}[overlay, remember picture]
+        \draw [decoration={brace,amplitude=0.5em},decorate,ultra thick,black]
+            ($(#3)!([yshift=1.5ex]#1)!($(#3)-(0,1)$)$) --
+            ($(#3)!(#2)!($(#3)-(0,1)$)$)
+                node [align=center, text width=3.5cm, pos=0.5, anchor=west] {#4};
+    \end{tikzpicture}
+}
+
+
+
+

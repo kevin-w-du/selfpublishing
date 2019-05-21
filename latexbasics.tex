@@ -1,0 +1,120 @@
+
+
+\chapter{Latex Basics}
+\label{chapter:basics}
+
+\thispagestyle{empty}
+
+
+\lipsum[2]
+ 
+
+\minitoc
+\newpage
+
+
+
+% *******************************************
+% SECTION
+% ******************************************* 
+\section{Page Layout} 
+
+
+\begin{lstlisting}
+\documentclass[10pt]{book}
+
+\usepackage{geometry}
+\geometry{paperwidth=7.5in,paperheight=9.25in, bindingoffset=2cm,
+          left=1.00in,right=0.50in,top=0.75in,bottom=0.50in,twoside}
+\end{lstlisting}
+ 
+
+
+% *******************************************
+% SECTION
+% *******************************************
+\section{Abstract}
+\label{basics:abstract}
+
+For the first page of each chapter, the page number is printed in the footer, not
+in the header. This will be out of bound when I submit it to KDP. 
+A common practice is not to print out the page number for the first page.
+That is why I set the style of this page to \texttt{empty}. 
+I also use \texttt{minitoc} to include a mini table of content 
+here. 
+
+\begin{lstlisting}
+\chapter{Basics}
+\label{chapter:basics}
+
+\thispagestyle{empty}
+
+The abstract ...
+
+\minitoc
+\newpage
+\end{lstlisting}
+
+
+
+% *******************************************
+% SECTION
+% ******************************************* 
+\section{Sections and Subsections} 
+
+This part is the same as any typical paper. I do not have anything special
+to say about it. Anybody who has written papers before should have no problem with 
+this part.
+
+
+
+
+% *******************************************
+% SECTION
+% ******************************************* 
+\section{Bibilography}
+
+
+
+
+% *******************************************
+% SECTION
+% ******************************************* 
+\section{Index}
+
+
+
+
+% *******************************************
+% SECTION
+% ******************************************* 
+\section{Including Code}
+
+
+
+
+% *******************************************
+% SECTION
+% ******************************************* 
+\section{Figures}
+
+
+
+
+% *******************************************
+% SECTION
+% ******************************************* 
+\section{Sidebars} 
+
+
+
+
+
+
+
+
+
+
+
+
+
