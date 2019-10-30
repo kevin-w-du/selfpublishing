@@ -1,5 +1,5 @@
 
-CHAPTERS = book.tex header.tex latexbasics.tex tricks.tex publishing.tex chapter4.tex
+CHAPTERS = book.tex header.tex latexbasics.tex tricks.tex publishing.tex 
 OTHERS = titlepage.tex preface.tex author.tex copyright.tex dedication.tex acknowledgment.tex
 
 

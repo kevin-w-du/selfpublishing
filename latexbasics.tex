@@ -6,8 +6,12 @@
 \thispagestyle{empty}
 
 
-\lipsum[2]
- 
+Microsoft Word is not a good tool for writing books. Use Latex. 
+For those who have never used Latex before, I strongly recommend 
+them to use Overleaf, which is an online LaTex editor that is easy to use,
+and it is free. Installing LaTex software and all its package is not 
+an easy job; using Overleaf, you don't need to install anything. 
+
 
 \minitoc
 \newpage
@@ -18,6 +22,9 @@
 % SECTION
 % ******************************************* 
 \section{Page Layout} 
+
+The format of the book is defined here, including its trim size and 
+margins. 
 
 
 \begin{lstlisting}
@@ -92,20 +99,63 @@ this part.
 
 
 
+\begin{lstlisting}[caption={The vulnerable program (\texttt{stack.c})},
+                   label={buffer:stack_program}]
+/* This program has a buffer overflow vulnerability. */
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
+int foo(char *str)
+{
+    char buffer[100];
+
+    /* The following statement has a buffer overflow problem */
+    strcpy(buffer, str);
+
+    return 1;
+}
+
+int main(int argc, char **argv)
+{
+    char str[400];
+    FILE *badfile;
+
+    badfile = fopen("badfile", "r");        (*@\ding{192}@*)
+    fread(str, sizeof(char), 300, badfile); (*@\ding{193}@*)
+    foo(str);
+
+    printf("Returned Properly\n");          (*@\ding{194}@*)
+    return 1;
+}
+\end{lstlisting}
+ 
+
+Sometimes, we need to refer to some particular lines in the code. I don't like to list 
+the line numbers. Instead, I use the \texttt{ding} font to 
+put a circled number in the lines that I would like to refer to. 
+For example, I would say ``Line~\ding{192} opens a file ...''. 
+This is much more convenient than referring to the actual line numbers. 
+If you like another style of circle numbers, you can use
+\ding{202}. \ding{203}, etc.
+
+
+
 
 % *******************************************
 % SECTION
 % ******************************************* 
 \section{Figures}
 
+Figure~\ref{fig:example} shows a figure example. 
 
-
-
-% *******************************************
-% SECTION
-% ******************************************* 
-\section{Sidebars} 
-
-
+\begin{figure}[htb]
+\begin{center}
+%\includegraphics[width=0.8\textwidth]{Figs/.pdf}
+\end{center}
+\caption{A figure example}
+\label{fig:example}
+\end{figure}
+ 
 
 
