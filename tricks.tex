@@ -18,20 +18,33 @@ I have learned and figured out some tricks that I find very useful.
 % ******************************************* 
 \section{Avoiding Screenshots If Possible}
 
+Screenshots are placed inside books as an image. One of the biggest
+problems in Latex is that images are floating, i.e., if you want to place
+the image below some paragraph, you may not be able to get that result.
+If space is not enough, Latex may move the image to another page. That is
+why I try to avoid using screenshots if possible.
 
+One of the common screenshots is to capture the program
+running results from a terminal window. Instead of using a screenshot, 
+I copy and paste the text and put it inside a \texttt{lstlisting} block. 
+See the following example: 
 
+\begin{lstlisting}
+$ chmod u+x exploit.py      (*@\reflectbox{\ding{217}} \textbf{make it executable}@*)
+$ rm badfile
+$ exploit.py
+$ ./stack
+# id       (*@\reflectbox{\ding{217}} \textbf{Got the root shell!}@*)
+uid=1000(seed) gid=1000(seed) (*@\textbf{euid=0(root)}@*) groups=0(root), ...
+\end{lstlisting}
 
-
-% *******************************************
-% SECTION
-% ******************************************* 
-\section{More Beautiful Tables}
-
-Latex tables are quite ugly. Use word, print to PDF, and then include it as a figure.
-
-I am sure there are some latex package out there that can make beautiful
-tables. I prefer this simple approach.
-
+The example above also shows how easy it is to annotate the
+``screenshot''. If this were an image, annotation will be much
+more complicated. Moreover, if you want to make some changes, such as 
+changing the name of the program, you can directly modify the text. If this
+were an image, you have to retake the screenshot. Sometimes, it may
+take you a long time to set up the environment so you can take
+the screenshot. 
 
 
 
@@ -41,13 +54,44 @@ tables. I prefer this simple approach.
 \section{Generating Figures-Only PDF}
 
 
+If you write a textbook, you may want to make all your figures available to
+instructors, so they can use the figures to make their slides. In the first
+edition of my book, I did it manually, and it took me quite a long time. 
+In the second edition, I learned a
+trick. I simply added the following to my Latex file (the main file). 
+When I use Latex to compile the main file, Latex will extract all the 
+figures from the book, and place them inside a new file 
+called \texttt{bookfigureonly\_new.tex} (this name is 
+specified by me in the following and it can be any name).
 
 
 
+
+\begin{lstlisting}
+\usepackage[
+active,
+generate=bookfigureonly_new,
+copydocumentclass=false,
+extract-cmd=chapter,
+extract-env={figure}
+]{extract}
+\begin{extract}
+\input{header}
+\input{experiment_header}
+\input{figure_folder}
+\end{extract}
+\end{lstlisting}
+
+After you get the figure-only tex file, you can run 
+Latex on this file. You will get a PDF file that contains
+all your figures. 
+ 
 
 % *******************************************
 % SECTION
 % ******************************************* 
 \section{Sharing Code Using GitHub}
 
+For code used in my book, I put them in a public GitHub repository, so
+readers can easily download my code.
 

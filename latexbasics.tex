@@ -6,7 +6,8 @@
 \thispagestyle{empty}
 
 
-Microsoft Word is not a good tool for writing books. Use Latex. 
+Microsoft Word is not a good tool for writing books. Latex is a much
+better tool. 
 For those who have never used Latex before, I strongly recommend 
 them to use Overleaf, which is an online LaTex editor that is easy to use,
 and it is free. Installing LaTex software and all its package is not 
@@ -24,7 +25,11 @@ an easy job; using Overleaf, you don't need to install anything.
 \section{Page Layout} 
 
 The format of the book is defined here, including its trim size and 
-margins. 
+margins. \texttt{7.5 x 9.25} is one of the standard trim sizes for 
+textbooks. 
+If you want to use a different trim size, you can adjust the
+parameters. Do make sure that the trim size you choose is supported by the
+self-publishing platform.  
 
 
 \begin{lstlisting}
@@ -70,7 +75,7 @@ The abstract ...
 \section{Sections and Subsections} 
 
 This part is the same as any typical paper. I do not have anything special
-to say about it. Anybody who has written papers before should have no problem with 
+to say about it. Anybody who has used Latex to write papers before should have no problem with 
 this part.
 
 
@@ -79,8 +84,20 @@ this part.
 % *******************************************
 % SECTION
 % ******************************************* 
-\section{Bibilography}
+\section{Bibliography}
 
+I use the \texttt{apalike} style for my bibliography. 
+Please pay attention to the difference of \texttt{\\citep\{\}} and
+\texttt{\\cite\{\}}. Here is an example.  
+\cite{Saltzer74} ...
+\citep{Saltzer74} ...
+
+\begin{lstlisting}
+\thispagestyle{empty}
+\bibliographystyle{apalike}
+\def\baselinestretch{1}
+\bibliography{BibBook}
+\end{lstlisting}
 
 
 
