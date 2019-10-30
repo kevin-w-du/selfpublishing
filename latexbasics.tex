@@ -87,10 +87,11 @@ this part.
 \section{Bibliography}
 
 I use the \texttt{apalike} style for my bibliography. 
-Please pay attention to the difference of \texttt{\\citep\{\}} and
-\texttt{\\cite\{\}}. Here is an example.  
-\cite{Saltzer74} ...
-\citep{Saltzer74} ...
+Please pay attention to the difference between \texttt{\textbackslash citep} and
+\texttt{\textbackslash cite}. Here is an example using \texttt{\textbackslash citep}:  
+Smith proposes a novel solution \citep{smith19}. 
+Here is an example using \texttt{\textbackslash cite}: 
+\cite{smith19} proposes a novel solution.
 
 \begin{lstlisting}
 \thispagestyle{empty}
@@ -99,13 +100,23 @@ Please pay attention to the difference of \texttt{\\citep\{\}} and
 \bibliography{BibBook}
 \end{lstlisting}
 
-
-
 % *******************************************
 % SECTION
 % ******************************************* 
-\section{Index}
+\section{Figures}
 
+You can easily include a figure. 
+Figure~\ref{fig:example} shows a figure example. 
+The Latex code is shown below: 
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{./figure.pdf}
+\end{center}
+\caption{A figure example}
+\label{fig:example}
+\end{figure}
+ 
 
 
 
@@ -153,26 +164,11 @@ the line numbers. Instead, I use the \texttt{ding} font to
 put a circled number in the lines that I would like to refer to. 
 For example, I would say ``Line~\ding{192} opens a file ...''. 
 This is much more convenient than referring to the actual line numbers. 
-If you like another style of circle numbers, you can use
+If you like another style of circled numbers, you can use
 \ding{202}. \ding{203}, etc.
 
 
 
 
-% *******************************************
-% SECTION
-% ******************************************* 
-\section{Figures}
-
-Figure~\ref{fig:example} shows a figure example. 
-
-\begin{figure}[htb]
-\begin{center}
-%\includegraphics[width=0.8\textwidth]{Figs/.pdf}
-\end{center}
-\caption{A figure example}
-\label{fig:example}
-\end{figure}
- 
 
 
